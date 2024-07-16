@@ -29,5 +29,18 @@ def main():
 
       st.markdown("---")  # Horizontal line for separation
 
+  # Add attribution with links
+  st.markdown(
+      """
+      <div style="position: fixed; bottom: 10px; right: 10px; text-align: right;">
+      <p>Built by 
+      <a href="https://github.com/ro-anderson" target="_blank">ro-anderson</a> | 
+      <a href="https://www.linkedin.com/in/ro-anderson/" target="_blank">LinkedIn</a>
+      </p>
+      </div>
+      """,
+      unsafe_allow_html=True
+  )
+
 if __name__ == "__main__":
   main()
