@@ -16,9 +16,9 @@ ENV PATH="/root/.local/bin:${PATH}"
 # Copy only the pyproject.toml and poetry.lock (if it exists)
 COPY pyproject.toml poetry.lock* /app/
 
-# Install the project dependencies
+# Install the project dependencies (without dev dependencies)
 RUN poetry config virtualenvs.create false \
-  && poetry install --no-interaction --no-ansi
+  && poetry install --no-interaction --no-ansi --no-dev
 
 # Copy the rest of the application
 COPY . /app
@@ -31,3 +31,12 @@ EXPOSE 8501
 
 # Set the command to run the app
 CMD ["poetry", "run", "streamlit", "run", "presentation/streamlit_app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+
+# Test image
+FROM base AS test
+
+# Install dev dependencies
+RUN poetry install --no-interaction --no-ansi --with dev
+
+# Set the command to run pytest
+CMD ["poetry", "run", "pytest", "-v"]
