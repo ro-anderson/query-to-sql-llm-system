@@ -5,8 +5,23 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      target: base
     ports:
       - "8501:8501"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_HOST=${DB_HOST}
+      - DB_NAME=${DB_NAME}
+    volumes:
+      - .:/app
+
+  app_test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: test
     environment:
       - OPENAI_API_KEY=${OPENAI_API_KEY}
       - DB_USER=${DB_USER}
