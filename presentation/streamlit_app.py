@@ -1,5 +1,5 @@
 import streamlit as st
-from app import get_sql_query
+from services.langchain_service import langchain_service
 
 def main():
   st.set_page_config(page_title="Text-to-SQL System", page_icon="🔍", layout="wide")
@@ -11,7 +11,7 @@ def main():
 
   if st.button("Submit"):
       with st.spinner("Generating SQL and fetching results..."):
-          sql_query, sql_result, answer = get_sql_query(question)
+          sql_query, sql_result, answer = langchain_service.get_sql_query(question)
 
       st.markdown("---")  # Horizontal line for separation
 
