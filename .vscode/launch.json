@@ -2,16 +2,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Streamlit: Run streamlit_app.py",
+            "name": "Streamlit: Run main.py",
             "type": "debugpy",
             "request": "launch",
-            "module": "streamlit",
-            "args": [
-                "run",
-                "${workspaceFolder}/streamlit_app.py"
-            ],
-            "jinja": true,
-            "justMyCode": true
+            "program": "${workspaceFolder}/main.py",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "console": "integratedTerminal",
+            "justMyCode": false
         }
     ]
 }
