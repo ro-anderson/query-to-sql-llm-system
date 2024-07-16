@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "text2sql-system"
+version = "0.1.0"
+description = ""
+authors = ["Rodrigo Anderson <didier.rda@gmail.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.11"
+langchain = "^0.2.8"
+langchain-community = "^0.2.7"
+langchain-experimental = "^0.0.62"
+mysql-connector-python = "^9.0.0"
+PyMySQL = "^1.1.1"
+langchain-openai = "^0.1.16"
+openai = "^1.35.14"
+streamlit = "^1.36.0"
+python-dotenv = "^1.0.1"
+watchdog = "^4.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
