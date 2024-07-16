@@ -14,4 +14,9 @@ class Settings:
   DB_HOST = os.getenv("DB_HOST")
   DB_NAME = os.getenv("DB_NAME")
 
+  # ChatOpenAI settings
+  OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-3.5-turbo-0125")
+  OPENAI_TEMPERATURE = float(os.getenv("OPENAI_TEMPERATURE", "0"))
+  OPENAI_VERBOSE = os.getenv("OPENAI_VERBOSE", "True").lower() == "true"
+
 settings = Settings()

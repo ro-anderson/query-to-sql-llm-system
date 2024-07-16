@@ -9,8 +9,13 @@ from config.settings import settings
 
 class LangchainService:
     def __init__(self):
-        self.llm = ChatOpenAI(temperature=0, verbose=True, api_key=settings.OPENAI_API_KEY)
-        self.db_chain = SQLDatabaseChain.from_llm(self.llm, database.db, prompt=SQL_PROMPT, verbose=True)
+      self.llm = ChatOpenAI(
+          model=settings.OPENAI_MODEL,
+          temperature=settings.OPENAI_TEMPERATURE,
+          verbose=settings.OPENAI_VERBOSE,
+          api_key=settings.OPENAI_API_KEY
+      )
+      self.db_chain = SQLDatabaseChain.from_llm(self.llm, database.db, prompt=SQL_PROMPT, verbose=settings.OPENAI_VERBOSE)
 
     @capture_output
     def invoke_chain(self, inputs):
